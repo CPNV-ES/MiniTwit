@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -12,9 +13,10 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Post $post)
     {
-        //
+       $comments = $post->comments;
+       return view ('comments.index', compact('post', 'comments'));
     }
 
     /**
@@ -24,7 +26,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+        return view('comment.create', ['post' => $post, 'text' => Comment::$text]);
     }
 
     /**
@@ -33,9 +35,10 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
-        //
+        $post->comment()->create($request->all());
+        return redirecte()->route('comment.index', $post);
     }
 
     /**
@@ -57,7 +60,7 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-        //
+        return view('comment.edit',['post' => $post, 'comment' => $comment, 'text' => Comment::$text]);
     }
 
     /**
@@ -78,8 +81,9 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function destroy(Post $post, Comment $comment)
     {
-        //
+        $comment->delete();
+        return redirecte()->route('comment.index');
     }
 }

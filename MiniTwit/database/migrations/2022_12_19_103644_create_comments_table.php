@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            $table->foreign('post_id')->nullable(false)->index();
+            $table->foreignId('user_id')->nullable(false)->index();
+            $text->text('text', 140)->nullable(false);
+            $likes->float('comment_likes')->nullable();
             $table->timestamps();
         });
     }
