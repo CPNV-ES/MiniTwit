@@ -29,4 +29,3 @@ Route::middleware([
 });
 Route::resource('comment.index');
 Route::resource('comment.create');
-
