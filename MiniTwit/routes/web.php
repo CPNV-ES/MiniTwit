@@ -18,7 +18,6 @@ Route::resource('posts', PostController::class);
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -28,3 +27,6 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+Route::resource('comment.index');
+Route::resource('comment.create');
+
