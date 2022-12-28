@@ -4,9 +4,13 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <?php foreach ($posts as $post) : ?>
                     <x-jet-welcome>
+                        {{ __($post->user_id) }}
                         {{ __($post->text) }}
                     </x-jet-welcome>
                 <?php endforeach; ?>
+            </div>
+            <div class="btn-new" style="margin-top: 50px; text-align: right;">
+                <a href="{{route('posts.create')}}" class="btn btn-success btn-lg" role="button" aria-pressed="true">New</a>
             </div>
         </div>
     </div>
