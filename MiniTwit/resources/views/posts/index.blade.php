@@ -4,8 +4,12 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <?php foreach ($posts as $post) : ?>
                     <x-jet-welcome>
-                        {{ __($post->user_id) }}
-                        {{ __($post->text) }}
+                        <x-slot name="username">
+                            {{ __($post->user_id) }}
+                        </x-slot>
+                        <x-slot name="content">
+                            {{ __($post->text) }}
+                        </x-slot>
                     </x-jet-welcome>
                 <?php endforeach; ?>
             </div>

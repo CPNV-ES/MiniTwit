@@ -13,13 +13,13 @@ class Post extends Model
         'likes' => User::class,
     ];
 
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
-    }
+    // public function comments()
+    // {
+    //     return $this->hasMany(Comment::class);
+    // }
 
-    public function post()
+    public function user()
     {
-        return $this->belongsTo(Post::class);
+        return $this->belongsTo(User::class);
     }
 }

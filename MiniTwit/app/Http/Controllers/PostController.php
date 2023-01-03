@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -15,7 +17,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('posts.index', ['posts' => $posts]);
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -36,8 +38,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = Post::create($request->all());
-        return redirect()->route('posts.index');
+        $user = $request->user();
+        $user->posts()->create($request->all());
+        return redirect()->route('posts.index', ['author' => $user]);
     }
 
     /**
