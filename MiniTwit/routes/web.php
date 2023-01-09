@@ -14,18 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('posts', PostController::class);
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.register');
 });
+
+Route::resource('posts', PostController::class);
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    return view('posts.index')->name('posts');
 });
 Route::resource('comment.index');
 Route::resource('comment.create');
