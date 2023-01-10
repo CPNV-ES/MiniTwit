@@ -11,6 +11,7 @@ class Post extends Model
 
     protected $casts = [
         'likes' => User::class,
+        'created_at' => 'datetime:Y/m/d',
     ];
 
     // public function comments()
