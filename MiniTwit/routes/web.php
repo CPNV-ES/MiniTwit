@@ -27,6 +27,3 @@ Route::middleware([
 ])->group(function () {
     return view('posts.index')->name('posts');
 });
-Route::resource('comment.index');
-Route::resource('comment.create');
-
