@@ -17,6 +17,12 @@
                                 {{$post->text}}
                             </p>
                         </div>
+                        <div class="container py-2 px-6 mx-0 min-w-full flex flex-col">
+                            <form action="{{ route('posts.comments', $post) }}" method="GET">
+                                @csrf
+                                <button type="submit" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Comments</button>
+                            </form>
+                        </div>
                         @if($post->user->name === Auth::user()->name)
                         <div class="container py-2 px-6 mx-0 min-w-full flex flex-col">
                             <form action="{{ route('posts.destroy', $post) }}" method="POST">
