@@ -32,8 +32,7 @@
         </div>
         <div class="container py-10 px-10 mx-0 min-w-full flex flex-col items-center">
             <form action="{{ route('posts.create') }}" method="GET">
-                <button type="button" class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">New Post</button>
-
+                <button type="submit" class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Create a new post</button>
             </form>
         </div>
     </div>
