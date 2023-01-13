@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 //Route::post('posts.like', 'PostController@like');
-Route::post('posts.like', [PostController::class, 'like']);
+Route::get('posts/{post}/like', [PostController::class, 'like'])->name('posts.like');
 Route::resource('posts', PostController::class);
 
 Route::middleware([
