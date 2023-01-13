@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ Route::get('/', function () {
 });
 
 Route::resource('posts', PostController::class);
+Route::resource('posts.comments', CommentController::class);
 
 Route::middleware([
     'auth:sanctum',
@@ -27,7 +29,3 @@ Route::middleware([
 ])->group(function () {
     return view('posts.index')->name('posts');
 });
-
-//Route::resource('comment.index');
-//Route::resource('comment.create');
-

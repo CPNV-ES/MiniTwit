@@ -16,7 +16,7 @@ class CommentController extends Controller
     public function index(Post $post)
     {
        $comments = $post->comments;
-       return view ('comments.index', compact('post', 'comments'));
+       return view ('posts.details', compact('comments'));
     }
 
     /**
@@ -26,7 +26,8 @@ class CommentController extends Controller
      */
     public function create()
     {
-        return view('comment.create', ['post' => $post, 'text' => Comment::$text]);
+        //
+
     }
 
     /**
@@ -37,8 +38,11 @@ class CommentController extends Controller
      */
     public function store(Request $request, Post $post)
     {
-        $post->comment()->create($request->all());
-        return redirect()->route('comment.index', $post);
+        /*$comment =
+        $comment->text = $request();
+        $comment->save();
+        $comment = $post->create($request->all());
+        return redirect()->route('post.comments.show', $post);*/
     }
 
     /**
@@ -60,7 +64,7 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-        return view('comment.edit',['post' => $post, 'comment' => $comment, 'text' => Comment::$text]);
+       // return view('comment.edit',['post' => $post, 'comment' => $comment, 'text' => Comment::$text]);
     }
 
     /**
@@ -84,6 +88,6 @@ class CommentController extends Controller
     public function destroy(Post $post, Comment $comment)
     {
         $comment->delete();
-        return redirecte()->route('comment.index');
+        return redirect()->route('comment.index');
     }
 }
