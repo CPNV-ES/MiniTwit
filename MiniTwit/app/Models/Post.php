@@ -7,10 +7,11 @@ use \Conner\Likeable\Likeable;
 
 class Post extends Model
 {
+    use Likeable;
+
     protected $fillable = ['text'];
 
     protected $casts = [
-        'likes' => User::class,
         'created_at' => 'datetime:Y/m/d',
     ];
 

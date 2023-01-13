@@ -18,8 +18,8 @@ Route::get('/', function () {
     return view('auth.register');
 });
 
-//Route::post('posts.like', 'PostController@like');
 Route::get('posts/{post}/like', [PostController::class, 'like'])->name('posts.like');
+Route::get('posts/{post}/dislike', [PostController::class, 'dislike'])->name('posts.dislike');
 Route::resource('posts', PostController::class);
 
 Route::middleware([

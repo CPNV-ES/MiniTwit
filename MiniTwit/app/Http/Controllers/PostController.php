@@ -19,8 +19,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        $likes = DB::table('user_post')->select('*')->get();
-        return view('posts.index', compact(['posts', 'likes']));
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -94,15 +93,15 @@ class PostController extends Controller
 
     public function like(Post $post)
     {
-        DB::table('user_post')->insert([
-            'user_id' => Auth::user()->id,
-            'post_id' => $post->id
-        ]);
+        $post->like();
+        $post->save();
         return redirect()->route('posts.index');
     }
 
-    public function unlike(Post $post)
+    public function dislike(Post $post)
     {
-        //
+        $post->unlike();
+        $post->save();
+        return redirect()->route('posts.index');
     }
 }
