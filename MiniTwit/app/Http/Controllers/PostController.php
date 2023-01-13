@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use Symfony\Component\VarDumper\Caster\RedisCaster;
 
 class PostController extends Controller
 {
@@ -15,7 +19,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('posts.index', ['posts' => $posts]);
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -36,8 +40,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = Post::create($request->all());
-        return redirect()->route('posts.index');
+        $user = $request->user();
+        $user->posts()->create($request->all());
+        return redirect()->route('posts.index', ['author' => $user]);
     }
 
     /**
@@ -84,5 +89,19 @@ class PostController extends Controller
     {
         $post->delete();
         return redirect()->route('posts.index');
+    }
+
+    public function like(Post $post)
+    {
+        DB::table('user_post')->insert([
+            'user_id' => Auth::user()->id,
+            'post_id' => $post->id
+        ]);
+        return redirect()->route('posts.index');
+    }
+
+    public function unlike(Post $post)
+    {
+        //
     }
 }
