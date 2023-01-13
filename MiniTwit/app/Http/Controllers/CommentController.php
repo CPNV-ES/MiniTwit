@@ -38,7 +38,7 @@ class CommentController extends Controller
     public function store(Request $request, Post $post)
     {
         $post->comment()->create($request->all());
-        return redirecte()->route('comment.index', $post);
+        return redirect()->route('comment.index', $post);
     }
 
     /**
@@ -49,7 +49,7 @@ class CommentController extends Controller
      */
     public function show(Comment $comment)
     {
-        //
+        return redirect()->route ('post.show', $comment);
     }
 
     /**

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreign('post_id')->nullable(false)->index();
             $table->foreignId('user_id')->nullable(false)->index();
-            $text->text('text', 140)->nullable(false);
-            $likes->float('comment_likes')->nullable();
+            $table->text('text', 140)->nullable(false);
+            $table->float('comment_likes')->nullable();
             $table->timestamps();
         });
     }

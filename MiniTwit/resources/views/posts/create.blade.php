@@ -8,7 +8,7 @@
                         <label for="text">Caption...</label>
                         <input type="text" id="text" name="text" class="form-control" placeholder="Enter caption">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-secondary">Submit</button>
                 </form>
             </div>
         </div>
