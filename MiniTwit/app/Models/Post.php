@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use Jenssegers\Mongodb\Eloquent\Model;
+use \Conner\Likeable\Likeable;
 
 class Post extends Model
 {
-
     protected $fillable = ['text'];
 
     protected $casts = [

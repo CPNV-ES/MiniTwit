@@ -16,9 +16,14 @@
                             <p class="text-gray-700 text-base">
                                 {{$post->text}}
                             </p>
+                            <div>
+                            <form method="POST" action="/posts/like">
+                                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Default</button>
+                            </form>
+                            </div>
                         </div>
                         <div class="container py-2 px-6 mx-0 min-w-full flex flex-col">
-                            <form action="{{ route('posts.comments', $post) }}" method="GET">
+                            <form action="" method="GET">
                                 @csrf
                                 <button type="submit" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Comments</button>
                             </form>

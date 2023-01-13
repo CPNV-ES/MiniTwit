@@ -18,6 +18,8 @@ Route::get('/', function () {
     return view('auth.register');
 });
 
+//Route::post('posts.like', 'PostController@like');
+Route::post('posts.like', [PostController::class, 'like']);
 Route::resource('posts', PostController::class);
 
 Route::middleware([
@@ -30,4 +32,3 @@ Route::middleware([
 
 //Route::resource('comment.index');
 //Route::resource('comment.create');
-
