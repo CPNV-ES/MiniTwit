@@ -26,7 +26,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+        return view ('posts.show');
 
     }
 
@@ -38,11 +38,8 @@ class CommentController extends Controller
      */
     public function store(Request $request, Post $post)
     {
-        /*$comment =
-        $comment->text = $request();
-        $comment->save();
-        $comment = $post->create($request->all());
-        return redirect()->route('post.comments.show', $post);*/
+        $post->comments()->create($request->all());
+        return redirect()->route('posts.show', compact('post'));
     }
 
     /**
@@ -53,7 +50,7 @@ class CommentController extends Controller
      */
     public function show(Comment $comment)
     {
-        return redirect()->route ('post.show', $comment);
+        //return redirect()->route ('post.show', $comment);
     }
 
     /**
