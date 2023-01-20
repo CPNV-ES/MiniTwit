@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use Symfony\Component\VarDumper\Caster\RedisCaster;
 
 class PostController extends Controller
 {
@@ -88,6 +90,20 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
+        return redirect()->route('posts.index');
+    }
+
+    public function like(Post $post)
+    {
+        $post->like();
+        $post->save();
+        return redirect()->route('posts.index');
+    }
+
+    public function dislike(Post $post)
+    {
+        $post->unlike();
+        $post->save();
         return redirect()->route('posts.index');
     }
 }

@@ -3,14 +3,15 @@
 namespace App\Models;
 
 use Jenssegers\Mongodb\Eloquent\Model;
+use \Conner\Likeable\Likeable;
 
 class Post extends Model
 {
+    use Likeable;
 
     protected $fillable = ['text'];
 
     protected $casts = [
-        'likes' => User::class,
         'created_at' => 'datetime:Y/m/d',
     ];
 
