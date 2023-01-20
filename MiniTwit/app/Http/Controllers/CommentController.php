@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -38,7 +39,11 @@ class CommentController extends Controller
      */
     public function store(Request $request, Post $post)
     {
-        $post->comments()->create($request->all());
+        $user = Auth::user();
+        $comment = new Comment($request->all());
+        $comment->user_id = $user->id;
+        $comment->post_id = $post->id;
+        $comment->save();
         return redirect()->route('posts.show', compact('post'));
     }
 

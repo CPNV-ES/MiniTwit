@@ -25,7 +25,12 @@
                             <tbody class="mx-6">
                                 @foreach ($comments as $comment)
                               <tr>
-                                <td class=" border-b border-gray-300">{{$comment->text}} {{$comment->user}}</td>
+                                <td class=" border-b border-gray-300">
+                                    <div class="flex justify-between">
+                                        <div>{{$comment->text}} </div>
+                                        <div></div>@if ($comment->user)by : {{$comment->user->name}} @endif
+                                    </div>
+                                    </td>
                               </tr>
                               @endforeach
                             </tbody>
