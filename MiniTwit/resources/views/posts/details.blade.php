@@ -15,32 +15,29 @@
                             {{$post->text}}
                         </p>
                     </div>
-                    <div>
-                        <table class="table-auto">
+                    <div class="mx-6">
+                        <table class="w-full">
                             <thead>
                               <tr>
-                                <th>Comments</th>
+                                <th class="text-left">Comments</th>
                               </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="mx-6">
                                 @foreach ($comments as $comment)
                               <tr>
-                                <td>{{$comment->text}}</td>
+                                <td class=" border-b border-gray-300">{{$comment->text}} {{$comment->user}}</td>
                               </tr>
                               @endforeach
                             </tbody>
                           </table>
                             </div>
-                            <form action="{{ route('posts.comments.store', $post) }}" type="submit" method="POST">
+                            <form action="{{ route('posts.comments.store', $post) }}" type="submit" method="POST" class="flex my-3">
                                 @csrf
-                                <div class="md:w-2/3 mx-6">
+                                <div class="ml-6 mt-3 flex-auto">
                                     <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" name="text" id="inline-full-name" type="text" placeholder="Votre commentaire...">
                                 </div>
-                                <div class="md:flex md:items-center">
-                                    <div class="md:w-1/3"></div>
-                                    <div class="md:w-2/3 ml-6 my-3">
-                                        <button type="submit" class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Save</button>
-                                    </div>
+                                <div class="ml-3 mr-4 mt-3 flex-none">
+                                    <button type="submit" class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Save</button>
                                 </div>                           
                             </form>
                           </div>
