@@ -15,15 +15,13 @@ class Post extends Model
         'created_at' => 'datetime:Y/m/d',
     ];
 
-    // public function comments()
-    // {
-    //     return $this->hasMany(Comment::class);
-    // }
+    public function comments()
+     {
+         return $this->hasMany(Comment::class);
+    }
 
     public function user()
     {
-        $test = $this->belongsTo(User::class);
-        //dd($test);
         return $this->belongsTo(User::class);
     }
 }
