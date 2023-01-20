@@ -45,10 +45,17 @@
                             <button type="submit" class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Save</button>
                         </div>
                     </form>
+                    @if($post->user->name === Auth::user()->name)
+                    <div class="container py-2 px-6 mx-0 min-w-full flex flex-col">
+                        <form action="{{ route('posts.destroy', $post) }}" method="POST">
+                            @method('delete')
+                            @csrf
+                            <button type="submit" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Delete Post</button>
+                        </form>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
-    </div>
-    </div>
     </div>
 </x-app-layout>

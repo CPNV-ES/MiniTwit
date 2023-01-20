@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use Jenssegers\Mongodb\Queue\MongoConnector;
 use Symfony\Component\VarDumper\Caster\RedisCaster;
 
 class PostController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -54,8 +56,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $comments = $post->comments;
-        return view ('posts.details', compact('comments', 'post'));
- 
+        return view('posts.details', compact('comments', 'post'));
     }
 
     /**
