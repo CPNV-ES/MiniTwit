@@ -13,6 +13,7 @@ class LikesCounter extends Component
 
         return view('livewire.likes-counter', [
             'post' => $this->post,
+            'commentsCount' => $this->post->comments->count(),
         ]);
     }
 

@@ -1,7 +1,12 @@
 <div class="mb-2">
-    <p class="mb-2">
-        {{ $post->likeCount }} @if($post->likeCount == 1) Like @else Likes @endif
-    </p>
+    <div class="flex flex-row mb-2 space-x-1">
+        <p>
+            {{ $post->likeCount }} @if($post->likeCount == 1) Like @else Likes @endif
+        </p>
+        <p>
+            {{ $commentsCount }} @if($commentsCount == 1) Comment @else Comments @endif
+        </p>
+    </div>
     <div class="flex flex-row">
         @if($post->liked())
         <button wire:click="decrement"
@@ -23,11 +28,11 @@
         </button>
         @endif
 
-        <form action="{{ route('posts.show', $post) }}" method="GET">
-            @csrf
-            <button type="submit"
-                class="bg-gray-300 py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none  rounded-lg border border-black-200 hover:bg-gray-200 focus:z-10 focus:ring-4 focus:ring-gray-200">More...</button>
-        </form>
+        <a href="{{ route('posts.comments.index', $post) }}">
+            <button
+                class="bg-gray-300 py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none  rounded-lg border border-black-200 hover:bg-gray-200 focus:z-10 focus:ring-4 focus:ring-gray-200">More...
+            </button>
+        </a>
         @if ($post->user->name === Auth::user()->name)
         <form action="{{ route('posts.destroy', $post) }}" method="POST" class="ml-auto mr-4">
             @method('delete')

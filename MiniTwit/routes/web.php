@@ -21,8 +21,8 @@ Route::get('/', function () {
 
 Route::get('posts/{post}/like', [PostController::class, 'like'])->name('posts.like');
 Route::get('posts/{post}/dislike', [PostController::class, 'dislike'])->name('posts.dislike');
-Route::resource('posts', PostController::class);
-Route::resource('posts.comments', CommentController::class);
+Route::resource('posts', PostController::class)->except(['show', 'edit', 'update']);
+Route::resource('posts.comments', CommentController::class)->except(['show', 'edit', 'update']);
 
 Route::middleware([
     'auth:sanctum',
@@ -31,4 +31,3 @@ Route::middleware([
 ])->group(function () {
     return view('posts.index')->name('posts');
 });
-

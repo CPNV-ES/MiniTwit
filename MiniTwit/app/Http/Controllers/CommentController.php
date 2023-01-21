@@ -16,8 +16,8 @@ class CommentController extends Controller
      */
     public function index(Post $post)
     {
-       $comments = $post->comments;
-       return view ('posts.details', compact('comments'));
+        $comments = $post->comments;
+        return view('posts.details', compact('comments', 'post'));
     }
 
     /**
@@ -25,10 +25,10 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Post $post)
     {
-        return view ('posts.show');
-
+        $comments = $post->comments;
+        return view('posts.details', compact('comments', 'post'));
     }
 
     /**
@@ -44,7 +44,7 @@ class CommentController extends Controller
         $comment->user_id = $user->id;
         $comment->post_id = $post->id;
         $comment->save();
-        return redirect()->route('posts.show', compact('post'));
+        return redirect()->back();
     }
 
     /**
@@ -56,6 +56,6 @@ class CommentController extends Controller
     public function destroy(Post $post, Comment $comment)
     {
         $comment->delete();
-        return redirect()->route('comment.index');
+        return redirect()->back();
     }
 }
