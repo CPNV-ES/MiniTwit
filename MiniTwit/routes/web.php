@@ -17,15 +17,13 @@ use App\Http\Controllers\CommentController;
 
 Route::get('/', [PostController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
 
-Route::get('posts/{post}/like', [PostController::class, 'like'])->name('posts.like');
-Route::get('posts/{post}/dislike', [PostController::class, 'dislike'])->name('posts.dislike');
-Route::resource('posts', PostController::class)->except(['show', 'edit', 'update']);
-Route::resource('posts.comments', CommentController::class)->except(['show', 'edit', 'update']);
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    return view('posts.index')->name('posts');
+    Route::get('posts/{post}/like', [PostController::class, 'like'])->name('posts.like');
+    Route::get('posts/{post}/dislike', [PostController::class, 'dislike'])->name('posts.dislike');
+    Route::resource('posts', PostController::class)->except(['show', 'edit', 'update']);
+    Route::resource('posts.comments', CommentController::class)->except(['show', 'edit', 'update']);
 });
