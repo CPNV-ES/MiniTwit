@@ -15,9 +15,7 @@ use App\Http\Controllers\CommentController;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.register');
-});
+Route::get('/', [PostController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
 
 Route::get('posts/{post}/like', [PostController::class, 'like'])->name('posts.like');
 Route::get('posts/{post}/dislike', [PostController::class, 'dislike'])->name('posts.dislike');
