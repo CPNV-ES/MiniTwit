@@ -3,6 +3,7 @@
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +27,5 @@ Route::middleware([
     Route::get('posts/{post}/dislike', [PostController::class, 'dislike'])->name('posts.dislike');
     Route::resource('posts', PostController::class)->except(['show', 'edit', 'update']);
     Route::resource('posts.comments', CommentController::class)->except(['show', 'edit', 'update']);
+    Route::get('user/stats', [UserController::class, 'stats'])->name('user.stats');
 });
