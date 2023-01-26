@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [PostController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('posts/{post}/like', [PostController::class, 'like'])->name('posts.like');
+    Route::get('posts/{post}/dislike', [PostController::class, 'dislike'])->name('posts.dislike');
+    Route::resource('posts', PostController::class)->except(['show', 'edit', 'update']);
+    Route::resource('posts.comments', CommentController::class)->except(['show', 'edit', 'update']);
+    Route::get('user/stats', [UserController::class, 'stats'])->name('user.stats');
 });
