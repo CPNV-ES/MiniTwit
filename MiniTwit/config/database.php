@@ -94,8 +94,9 @@ return [
         ],
         'mongodb' => [
             'driver' => 'mongodb',
-            'dsn' => env('DB_DSN'),
-            'database' => env('DB_DATABASE', 'minitwit'),
+            'host' => env('DB_HOST', 'localhost'),
+            'port' => env('DB_PORT', '27017'),
+            'database' => env('DB_DATABASE', 'forge'),
         ],
     ],
 
