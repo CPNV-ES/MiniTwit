@@ -10,7 +10,8 @@ Le clone de Twitter en simplifié
 La dernière version de MiniTwit a été déployée sur Heroku et est accessible au lien suivant: [MiniTwit](www.minitwit.social)
 
 ## Contributeurs
-- (lpodev)[www.github.com/lpodev]
-- (thomasgrossmann)[www.github.com/thomasgrossmann]
-- (menoudyann)[www.github.com/menoudmenoud]
-- (VicMtn)[www.github.com/vicmtn]
+<a href="https://github.com/lpodev/MiniTwit/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=lpodev/MiniTwit" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
