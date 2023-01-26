@@ -7,7 +7,7 @@ Le clone de Twitter en simplifié
 - Tailwind
 
 ## Déploiement
-La dernière version de MiniTwit a été déployée sur Heroku et est accessible au lien suivant: [MiniTwit](www.minitwit.social)
+La dernière version de MiniTwit a été déployée sur Heroku et est accessible au lien suivant: [MiniTwit](https://www.minitwit.social)
 
 ## Contributeurs
 <a href="https://github.com/CPNV-ES/MiniTwit/graphs/contributors">
